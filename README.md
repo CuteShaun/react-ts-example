@@ -1,16 +1,18 @@
 # Verbit Frontend Home Assignment
 
-This assignment has been given to you as part of our interview process. it should take approximately 5-6 hours to complete. 
+This assignment has been given to you as part of our interview process. It should take approximately 5-6 hours to complete. 
 
 ## How to do it
  - To begin, read all of the instructions on this page. 
- -Use this repository to push the code to. Start with creating a new `create-react-app` and push it as a baseline. Next, start working on the assignment (detailed below).
-- Push your changes roughly once an hour, even if your code is incomplete or does not build. This will allow us to see your progress.
-- Once you have completed the assignment, make a final push containing working code. 
-- Edit the `README` with instructions on how to run the app, and Let us know when you're done. 
-- you can contact us in any case:
- Omri: omri.barzilai@verbit.ai
- Hila: hila.ben-baruch@verbit.ai
+ - Use this repository to push the code to. Start with creating a new `create-react-app` and push it as a baseline. Next, start working on the assignment (detailed below).
+ - In order for us to see your progress, please push your changes roughly once an hour, even if your code is incomplete or does not build. 
+ - Once you have completed the assignment: 
+   - Make a final push containing working code. 
+   - Edit the `README` with instructions on how to run the app.
+   - Let us know you're done. 
+ - Feel free to contact us in any case:
+   - Omri: omri.barzilai@verbit.ai
+   - Hila: hila.ben-baruch@verbit.ai
 
 
 ## Assignment
@@ -26,7 +28,7 @@ Your task is to create a web application with the following features:
 - Requirments:
    - The Characters list should be searchable through a search input field that will filter the list accordingly.
    - The Characters list should be sortable. The user should be able to sort by name or number of films using a selection component (the default order should be ascending).
-   - The Characters list should display pagination if it contains more than 10 characters. The user should be able to navigate backwards and forwards using arrow buttons and by clicking on page numbers.
+   - The Characters list should display pagination if it contains more than 10 characters. The user should be able to navigate backwards and forwards using arrow buttons and/or by clicking on page number.
    - Clicking on a character should display their movie list on the right. The application should indicate which character is currently selected.
 
 The page should be designed nicely, even if you are not a designer (which is fine!). It should look presentable and "nice".
