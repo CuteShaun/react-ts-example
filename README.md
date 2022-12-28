@@ -19,7 +19,7 @@ This assignment has been given to you as part of our interview process. It shoul
 
 The assignment involves working with the Star Wars API (https://swapi.dev/). This is a simple REST API that returns information related to Star Wars movies.
 
-Your task is to create a web application with the following features:
+Your task is to create a web application, written in **typescript**, with the following features:
 - The layout (roughly sketched below) has two sections:
    - **Characters List** - A list of Star Wars characters (i.e., those returned by https://swapi.dev/api/people/). Each item should display the character's name and the number of films they have appeared in.
 
