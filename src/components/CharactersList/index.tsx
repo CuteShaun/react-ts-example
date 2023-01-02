@@ -1,9 +1,14 @@
 import { useState, useEffect, MouseEvent } from "react";
-import { STRAPI_URL } from "../../constants";
 import { CharacterCard } from "../CharacterCard";
+import { STRAPI_URL } from "../../constants";
 
-export const CharactesList = () => {
+export const CharactesList = ({
+    handleClick = () => {}
+}: {
+    handleClick: (e: MouseEvent, id: string, movies: Array<URL>) => void
+}) => {
     const [list, setList] = useState([] as any[]);
+    const [movieMap, setMovieMap] = useState([]);
 
     useEffect(() => {
         const getAllCharacters = async () => {
@@ -15,17 +20,15 @@ export const CharactesList = () => {
         getAllCharacters();
     }, []);
 
-    const handleClick = (e: React.MouseEvent) => {
-        console.log(e, "event");
-    }
-
     return (
         <ul>
             {list.map((character) => (
                 <CharacterCard
                     key={character.url}
+                    id={character.url}
                     name={character.name}
                     filmsNumber={character.films.length}
+                    movies={character.films}
                     handleClick={handleClick}
                 />
             ))}

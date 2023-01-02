@@ -1,9 +1,9 @@
 import React from "react";
 
-export const Select = ({ options = [] }) => (
+export const Select = ({ options = [] }: {options: Array<HTMLOptionElement | String>}) => (
     <select>
-        {/* {options.map((item) => (
-            <option value={item.value}>{item.text}</option>
-        ))} */}
+        {options.map((item) => (
+            <option value={item as string}>{`${item}`}</option>
+        ))}
     </select>
 );
