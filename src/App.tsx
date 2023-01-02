@@ -9,6 +9,7 @@ const sortOptions = ["name", "film"];
 export const App = () => {
     const [movieList, setMovieList] = useState([] as any[]);
     const [searchText, setSearchText] = useState("");
+    const [sortQuery, setSortQuery] = useState("");
 
     const getMovieList = (movieList: Array<URL> = []) => {
         Promise.all(
@@ -28,14 +29,19 @@ export const App = () => {
             .catch(console.error.bind(console));
     };
 
-    const handleClick = (e: MouseEvent, id: string, movies: Array<URL>) => {
+    const handleClick = (e: MouseEvent, id: string, movies: Array<URL>): void => {
         getMovieList(movies);
     };
 
-    const handleSearch = (e: React.FormEvent<HTMLInputElement>) => {
+    const handleSearch = (e: React.FormEvent<HTMLInputElement>): void => {
         const target = e.target as HTMLInputElement;
         setSearchText(target.value);
     };
+
+    const handleSort = (e: React.FormEvent<HTMLSelectElement>): void => {
+        const target = e.target as HTMLSelectElement;
+        setSortQuery(target.value);
+    }
 
     return (
         <div className="layout">
@@ -48,9 +54,9 @@ export const App = () => {
                             value={searchText}
                             onChange={handleSearch}
                         />
-                        <Select options={sortOptions} />
+                        <Select options={sortOptions} onChange={handleSort} />
                     </header>
-                    <CharactesList handleClick={handleClick} searchText={searchText} />
+                    <CharactesList handleClick={handleClick} searchText={searchText} sortQuery={sortQuery} />
                 </section>
                 <section className="movies-section">
                     <MoviesList movieList={movieList} />

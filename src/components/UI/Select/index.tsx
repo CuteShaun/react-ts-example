@@ -1,9 +1,18 @@
-import React from "react";
-
-export const Select = ({ options = [] }: {options: Array<HTMLOptionElement | String>}) => (
-    <select>
+export const Select = ({
+    options = [],
+    placeholder = "",
+    onChange = () => {},
+}: {
+    options: Array<HTMLOptionElement | String>,
+    placeholder: string,
+    onChange: (e: React.FormEvent<HTMLSelectElement>) => void
+}) => (
+    <select onChange={onChange}>
+        <option disabled selected>
+           {placeholder}
+        </option>
         {options.map((item) => (
-            <option value={item as string}>{`${item}`}</option>
+            <option key={item as string} value={item as string}>{`${item}`}</option>
         ))}
     </select>
 );
