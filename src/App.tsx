@@ -54,7 +54,7 @@ export const App = () => {
                             value={searchText}
                             onChange={handleSearch}
                         />
-                        <Select options={sortOptions} onChange={handleSort} />
+                        <Select placeholder="sort by" options={sortOptions} onChange={handleSort} />
                     </header>
                     <CharactesList handleClick={handleClick} searchText={searchText} sortQuery={sortQuery} />
                 </section>
