@@ -1,18 +1,19 @@
-import { useState, useEffect, MouseEvent } from "react";
+import { useEffect, MouseEvent } from "react";
 import { CharacterCard } from "../CharacterCard";
-import { STRAPI_URL } from "../../constants";
 
 export const CharactesList = ({
     searchText = "",
     sortQuery = "",
+    charactersList = [],
     handleClick = () => {},
+    getAllCharacters = () => {},
 }: {
     searchText: string;
     sortQuery: string;
+    charactersList: Array<any>;
     handleClick: (e: MouseEvent, id: string, movies: Array<URL>) => void;
+    getAllCharacters: () => void;
 }) => {
-    const [list, setList] = useState([] as any[]);
-
     const getSortedList = (list = [] as any[]) => {
         if (sortQuery === "name") {
             return list.sort((a, b) => {
@@ -34,7 +35,7 @@ export const CharactesList = ({
     };
 
     const getFilteredList = () => {
-        const filtered = list.filter((item) => {
+        const filtered = charactersList.filter((item) => {
             if (searchText === "") {
                 return item;
             }
@@ -48,12 +49,6 @@ export const CharactesList = ({
     const filteredList = getFilteredList();
 
     useEffect(() => {
-        const getAllCharacters = async () => {
-            const response = await fetch(STRAPI_URL);
-            const data = await response.json();
-            setList(data.results);
-        };
-
         getAllCharacters();
     }, []);
 

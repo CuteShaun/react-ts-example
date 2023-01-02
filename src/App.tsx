@@ -3,17 +3,28 @@ import { CharactesList } from "./components/CharactersList";
 import { MoviesList } from "./components/MoviesList";
 import { Select } from "./components/UI/Select";
 import { Input } from "./components/UI/Input";
+import { Pagination } from "./components/Pagination";
+import { STRAPI_URL } from "./constants";
 
 const sortOptions = ["name", "film"];
 
 export const App = () => {
+    const [charactersList, setCharactersList] = useState([] as any[]);
+    const [totalCount, setTotalCount] = useState(0);
     const [movieList, setMovieList] = useState([] as any[]);
     const [searchText, setSearchText] = useState("");
     const [sortQuery, setSortQuery] = useState("");
 
+    const getAllCharacters = async (url: string = STRAPI_URL) => {
+        const response = await fetch(url);
+        const data = await response.json();
+        setTotalCount(data.count);
+        setCharactersList(data.results);
+    };
+
     const getMovieList = (movieList: Array<URL> = []) => {
         Promise.all(
-            movieList.map((movie) => {
+            movieList.map(async (movie) => {
                 return fetch(movie)
                     .then((response) => {
                         return response.json();
@@ -41,7 +52,7 @@ export const App = () => {
     const handleSort = (e: React.FormEvent<HTMLSelectElement>): void => {
         const target = e.target as HTMLSelectElement;
         setSortQuery(target.value);
-    }
+    };
 
     return (
         <div className="layout">
@@ -56,7 +67,15 @@ export const App = () => {
                         />
                         <Select placeholder="sort by" options={sortOptions} onChange={handleSort} />
                     </header>
-                    <CharactesList handleClick={handleClick} searchText={searchText} sortQuery={sortQuery} />
+                    <CharactesList
+                        getAllCharacters={getAllCharacters}
+                        charactersList={charactersList}
+                        handleClick={handleClick}
+                        searchText={searchText}
+                        sortQuery={sortQuery}
+                    />
+                    <Pagination totalCount={totalCount} getAllCharacters={getAllCharacters}/>
+
                 </section>
                 <section className="movies-section">
                     <MoviesList movieList={movieList} />
