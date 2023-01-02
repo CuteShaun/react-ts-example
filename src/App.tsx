@@ -8,6 +8,7 @@ const sortOptions = ["name", "film"];
 
 export const App = () => {
     const [movieList, setMovieList] = useState([] as any[]);
+    const [searchText, setSearchText] = useState("");
 
     const getMovieList = (movieList: Array<URL> = []) => {
         Promise.all(
@@ -31,15 +32,25 @@ export const App = () => {
         getMovieList(movies);
     };
 
+    const handleSearch = (e: React.FormEvent<HTMLInputElement>) => {
+        const target = e.target as HTMLInputElement;
+        setSearchText(target.value);
+    };
+
     return (
         <div className="layout">
             <main className="main">
                 <section className="characters-section">
                     <header className="characters-section__header">
-                        <Input type="text" placeholder="Search your destiny" />
+                        <Input
+                            type="text"
+                            placeholder="Search your destiny"
+                            value={searchText}
+                            onChange={handleSearch}
+                        />
                         <Select options={sortOptions} />
                     </header>
-                    <CharactesList handleClick={handleClick} />
+                    <CharactesList handleClick={handleClick} searchText={searchText} />
                 </section>
                 <section className="movies-section">
                     <MoviesList movieList={movieList} />

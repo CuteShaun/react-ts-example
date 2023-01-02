@@ -31,8 +31,19 @@ li {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-top: 40px;
+}
+
+.characters-section {
+  width: 50%;
+}
+
+.movie-section {
+  width: 40%;
 }
 
 .characters-section__header {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 30px;
 }

@@ -3,12 +3,25 @@ import { CharacterCard } from "../CharacterCard";
 import { STRAPI_URL } from "../../constants";
 
 export const CharactesList = ({
-    handleClick = () => {}
+    searchText = "",
+    handleClick = () => {},
 }: {
-    handleClick: (e: MouseEvent, id: string, movies: Array<URL>) => void
+    searchText: string;
+    handleClick: (e: MouseEvent, id: string, movies: Array<URL>) => void;
 }) => {
     const [list, setList] = useState([] as any[]);
-    const [movieMap, setMovieMap] = useState([]);
+
+    const getFilteredList = () => {
+        return list.filter((item) => {
+            if (searchText === "") {
+                return item;
+            }
+
+            return item.name.toLowerCase().includes(searchText);
+        });
+    };
+
+    const filteredList = getFilteredList();
 
     useEffect(() => {
         const getAllCharacters = async () => {
@@ -22,7 +35,7 @@ export const CharactesList = ({
 
     return (
         <ul>
-            {list.map((character) => (
+            {filteredList.map((character) => (
                 <CharacterCard
                     key={character.url}
                     id={character.url}
