@@ -1,3 +1,5 @@
+import './Select.scss';
+
 export const Select = ({
     options = [],
     placeholder = "",
@@ -7,7 +9,9 @@ export const Select = ({
     placeholder: string,
     onChange: (e: React.FormEvent<HTMLSelectElement>) => void
 }) => (
-    <select onChange={onChange} defaultValue={placeholder}>
+
+    <div className="select">
+    <select id="standard-select" onChange={onChange} defaultValue={placeholder}>
         <option disabled value={placeholder}>
            {placeholder}
         </option>
@@ -15,4 +19,5 @@ export const Select = ({
             <option key={item as string} value={item as string}>{`${item}`}</option>
         ))}
     </select>
+    </div>
 );

@@ -1,29 +1,30 @@
 .container {
     margin-top: 30px;
+    margin-bottom: 5px;
     display: flex;
     justify-content: center;
     list-style: none;
     padding: 0;
-  }
-  
-  .page a,
-  .next a,
-  .previous a {
+}
+
+.page a,
+.next a,
+.previous a {
     padding: 8px 13px;
     border-radius: 6px;
     cursor: pointer;
 
     &:hover {
-        background-color: rgba(223,65,66, 0.3);
+        background-color: var(--brand-light-color);
     }
-  }
-  
-  .active a {
+}
+
+.active a {
     font-weight: bold;
     color: white;
-    background-color: #df4142;
+    background-color: var(--brand-color-darker);
 
     &:hover {
-        background-color: #ff2022;
+        background-color: var(--brand-color-dark);
     }
-  }
+}

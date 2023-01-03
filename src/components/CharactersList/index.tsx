@@ -2,6 +2,7 @@ import { useEffect, MouseEvent } from "react";
 import { CharacterCard } from "../CharacterCard";
 import { Character } from "../../types/interfaces";
 import { getFilteredList } from "../../utils";
+import './CharacterList.scss';
 
 export const CharactesList = ({
     searchText = "",
@@ -25,7 +26,7 @@ export const CharactesList = ({
     }, [getAllCharacters]);
 
     return (
-        <ul>
+        <ul className="character-list">
             {filteredList.map((character) => (
                 <CharacterCard
                     selected={selected}

@@ -1,0 +1,20 @@
+.text-input {
+    font-size: 16px;
+    font-weight: normal;
+    color: #333;
+    display: block;
+    width: 100%;
+    background: none;
+    outline: none;
+    border: none;
+    padding: 0;
+    height: 55px;
+    z-index: 1;
+    position: relative;
+    top: -1px; 
+    border-radius: 10px;
+
+    @media(max-width: 500px) {
+        font-size: 24px;
+    }
+}

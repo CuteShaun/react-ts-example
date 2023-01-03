@@ -1,5 +1,5 @@
 import { MouseEvent } from "react";
-import "./CharacterCard.css";
+import "./CharacterCard.scss";
 
 export const CharacterCard = ({
     name = "",
@@ -22,7 +22,7 @@ export const CharacterCard = ({
             onClick={(e) => handleClick(e as MouseEvent, id, movies)}
         >
             <div
-                className={`card${selected === id ? "--selected" : ""}`}
+                className={`card card${selected === id ? "--selected" : ""}`}
             >{`${name} --- films ${filmsNumber}`}</div>
         </li>
     );

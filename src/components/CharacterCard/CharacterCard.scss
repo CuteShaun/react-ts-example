@@ -1,0 +1,10 @@
+.card {
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    padding: 2px 5px;
+}
+
+.card--selected {
+    border: 1px solid var(--brand-color);
+    background-color: var(--brand-color);
+}

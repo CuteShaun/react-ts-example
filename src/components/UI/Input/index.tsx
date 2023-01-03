@@ -1,3 +1,5 @@
+import './Input.scss';
+
 export const Input = ({
     type = "text",
     value = "",
@@ -8,4 +10,4 @@ export const Input = ({
     value: string,
     placeholder: string,
     onChange: (e: React.FormEvent<HTMLInputElement>) => void
-}) => <input onChange={onChange} type={type} value={value} placeholder={placeholder} />;
+}) => <input className="text-input" onChange={onChange} type={type} value={value} placeholder={placeholder} />;

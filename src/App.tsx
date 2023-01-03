@@ -5,6 +5,7 @@ import { Select } from "./components/UI/Select";
 import { Input } from "./components/UI/Input";
 import { Pagination } from "./components/Pagination";
 import { STRAPI_URL, SORT_OPTIONS } from "./constants";
+import { AtWalker } from "./components/AT-AT-Walker";
 
 export const App = () => {
     const [charactersList, setCharactersList] = useState([] as any[]);
@@ -55,36 +56,39 @@ export const App = () => {
     };
 
     return (
-        <div className="layout">
-            <main className="main">
-                <section className="characters-section">
-                    <header className="characters-section__header">
-                        <Input
-                            type="text"
-                            placeholder="Search your destiny"
-                            value={searchText}
-                            onChange={handleSearch}
+        <>
+            <div className="layout">
+                <main className="main">
+                    <section className="section characters-section">
+                        <header className="characters-section__header">
+                            <Input
+                                type="text"
+                                placeholder="Search your destiny"
+                                value={searchText}
+                                onChange={handleSearch}
+                            />
+                            <Select
+                                placeholder="sort by"
+                                options={SORT_OPTIONS}
+                                onChange={handleSort}
+                            />
+                        </header>
+                        <CharactesList
+                            getAllCharacters={getAllCharacters}
+                            charactersList={charactersList}
+                            handleClick={handleClick}
+                            searchText={searchText}
+                            sortQuery={sortQuery}
+                            selected={selected}
                         />
-                        <Select
-                            placeholder="sort by"
-                            options={SORT_OPTIONS}
-                            onChange={handleSort}
-                        />
-                    </header>
-                    <CharactesList
-                        getAllCharacters={getAllCharacters}
-                        charactersList={charactersList}
-                        handleClick={handleClick}
-                        searchText={searchText}
-                        sortQuery={sortQuery}
-                        selected={selected}
-                    />
-                    <Pagination totalCount={totalCount} getAllCharacters={getAllCharacters} />
-                </section>
-                <section className="movies-section">
-                    <MoviesList movieList={movieList} />
-                </section>
-            </main>
-        </div>
+                        <Pagination totalCount={totalCount} getAllCharacters={getAllCharacters} />
+                    </section>
+                    <section className="section movies-section">
+                        <MoviesList movieList={movieList} />
+                    </section>
+                </main>
+            </div>
+            <AtWalker />
+        </>
     );
 };
