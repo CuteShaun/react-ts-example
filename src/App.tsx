@@ -14,6 +14,7 @@ export const App = () => {
     const [movieList, setMovieList] = useState([] as any[]);
     const [searchText, setSearchText] = useState("");
     const [sortQuery, setSortQuery] = useState("");
+    const [selected, setSelected] = useState("");
 
     const getAllCharacters = async (url: string = STRAPI_URL) => {
         const response = await fetch(url);
@@ -42,6 +43,7 @@ export const App = () => {
 
     const handleClick = (e: MouseEvent, id: string, movies: Array<URL>): void => {
         getMovieList(movies);
+        setSelected(id);
     };
 
     const handleSearch = (e: React.FormEvent<HTMLInputElement>): void => {
@@ -73,9 +75,10 @@ export const App = () => {
                         handleClick={handleClick}
                         searchText={searchText}
                         sortQuery={sortQuery}
+                        selected={selected}
+                        // setSelected={setSelected}
                     />
-                    <Pagination totalCount={totalCount} getAllCharacters={getAllCharacters}/>
-
+                    <Pagination totalCount={totalCount} getAllCharacters={getAllCharacters} />
                 </section>
                 <section className="movies-section">
                     <MoviesList movieList={movieList} />

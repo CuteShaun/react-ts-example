@@ -1,17 +1,21 @@
-import { useEffect, MouseEvent } from "react";
+import { useEffect, MouseEvent, useState } from "react";
 import { CharacterCard } from "../CharacterCard";
 
 export const CharactesList = ({
     searchText = "",
     sortQuery = "",
     charactersList = [],
+    selected = "",
     handleClick = () => {},
+    // setSelected = () => {},
     getAllCharacters = () => {},
 }: {
     searchText: string;
     sortQuery: string;
     charactersList: Array<any>;
+    selected: string,
     handleClick: (e: MouseEvent, id: string, movies: Array<URL>) => void;
+    // setSelected: (value: string) => void;
     getAllCharacters: () => void;
 }) => {
     const getSortedList = (list = [] as any[]) => {
@@ -56,6 +60,7 @@ export const CharactesList = ({
         <ul>
             {filteredList.map((character) => (
                 <CharacterCard
+                    selected={selected}
                     key={character.url}
                     id={character.url}
                     name={character.name}
