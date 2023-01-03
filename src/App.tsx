@@ -1,12 +1,10 @@
-import { MouseEvent, useState } from "react";
+import { MouseEvent, useState, useCallback } from "react";
 import { CharactesList } from "./components/CharactersList";
 import { MoviesList } from "./components/MoviesList";
 import { Select } from "./components/UI/Select";
 import { Input } from "./components/UI/Input";
 import { Pagination } from "./components/Pagination";
-import { STRAPI_URL } from "./constants";
-
-const sortOptions = ["name", "film"];
+import { STRAPI_URL, SORT_OPTIONS } from "./constants";
 
 export const App = () => {
     const [charactersList, setCharactersList] = useState([] as any[]);
@@ -16,12 +14,12 @@ export const App = () => {
     const [sortQuery, setSortQuery] = useState("");
     const [selected, setSelected] = useState("");
 
-    const getAllCharacters = async (url: string = STRAPI_URL) => {
+    const getAllCharacters = useCallback(async (url: string = STRAPI_URL) => {
         const response = await fetch(url);
         const data = await response.json();
         setTotalCount(data.count);
         setCharactersList(data.results);
-    };
+    }, []);
 
     const getMovieList = (movieList: Array<URL> = []) => {
         Promise.all(
@@ -67,7 +65,7 @@ export const App = () => {
                             value={searchText}
                             onChange={handleSearch}
                         />
-                        <Select placeholder="sort by" options={sortOptions} onChange={handleSort} />
+                        <Select placeholder="sort by" options={SORT_OPTIONS} onChange={handleSort} />
                     </header>
                     <CharactesList
                         getAllCharacters={getAllCharacters}
@@ -76,7 +74,6 @@ export const App = () => {
                         searchText={searchText}
                         sortQuery={sortQuery}
                         selected={selected}
-                        // setSelected={setSelected}
                     />
                     <Pagination totalCount={totalCount} getAllCharacters={getAllCharacters} />
                 </section>

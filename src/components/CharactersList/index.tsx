@@ -1,5 +1,6 @@
-import { useEffect, MouseEvent, useState } from "react";
+import { useEffect, MouseEvent } from "react";
 import { CharacterCard } from "../CharacterCard";
+import { Character } from "../../types/interfaces";
 
 export const CharactesList = ({
     searchText = "",
@@ -7,15 +8,13 @@ export const CharactesList = ({
     charactersList = [],
     selected = "",
     handleClick = () => {},
-    // setSelected = () => {},
     getAllCharacters = () => {},
 }: {
     searchText: string;
     sortQuery: string;
-    charactersList: Array<any>;
-    selected: string,
+    charactersList: Array<Character>;
+    selected: string;
     handleClick: (e: MouseEvent, id: string, movies: Array<URL>) => void;
-    // setSelected: (value: string) => void;
     getAllCharacters: () => void;
 }) => {
     const getSortedList = (list = [] as any[]) => {

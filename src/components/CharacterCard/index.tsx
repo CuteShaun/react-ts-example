@@ -9,16 +9,21 @@ export const CharacterCard = ({
     selected = "",
     handleClick = () => {},
 }: {
-    name: string,
-    filmsNumber: number,
-    id: string,
-    movies: Array<URL>
-    selected: string,
-    handleClick: (e: MouseEvent, id: string, movies: Array<URL>) => void
+    name: string;
+    filmsNumber: number;
+    id: string;
+    movies: Array<URL>;
+    selected: string;
+    handleClick: (e: MouseEvent, id: string, movies: Array<URL>) => void;
 }) => {
     return (
-        <li className="character-list__item" onClick={(e) => handleClick(e as MouseEvent, id, movies)}>
-            <div className={`card${selected === id ? "--selected" : ''}`}>{`${name} --- films ${filmsNumber}`}</div>
+        <li
+            className="character-list__item"
+            onClick={(e) => handleClick(e as MouseEvent, id, movies)}
+        >
+            <div
+                className={`card${selected === id ? "--selected" : ""}`}
+            >{`${name} --- films ${filmsNumber}`}</div>
         </li>
     );
 };

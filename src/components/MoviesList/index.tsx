@@ -1,4 +1,6 @@
-export const MoviesList = ({ movieList = [] }: { movieList: Array<any> }) => {
+import { Movie } from "../../types/interfaces";
+
+export const MoviesList = ({ movieList = [] }: { movieList: Array<Movie> }) => {
     return (
         <ul>
             {movieList.map((movie) => (

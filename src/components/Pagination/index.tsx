@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
+import { STRAPI_URL_PAGE } from "../../constants";
 import "./Pagination.scss";
 
 export const Pagination = ({
@@ -24,7 +25,7 @@ export const Pagination = ({
     }, [totalCount, generatePageCount]);
 
     const handlePageChange = (selectedObject: { selected: number }) => {
-        const url = `https://swapi.dev/api/people/?page=${selectedObject.selected + 1}`;
+        const url = `${STRAPI_URL_PAGE}${selectedObject.selected + 1}`;
         getAllCharacters(url);
     };
 
@@ -33,8 +34,6 @@ export const Pagination = ({
             {totalCount > 0 && (
                 <ReactPaginate
                     pageCount={pageCount}
-                    // pageRange={2}
-                    // forcePage={currentPage}
                     marginPagesDisplayed={2}
                     pageRangeDisplayed={3}
                     onPageChange={handlePageChange}
