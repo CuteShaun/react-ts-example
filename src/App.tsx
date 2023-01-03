@@ -65,7 +65,11 @@ export const App = () => {
                             value={searchText}
                             onChange={handleSearch}
                         />
-                        <Select placeholder="sort by" options={SORT_OPTIONS} onChange={handleSort} />
+                        <Select
+                            placeholder="sort by"
+                            options={SORT_OPTIONS}
+                            onChange={handleSort}
+                        />
                     </header>
                     <CharactesList
                         getAllCharacters={getAllCharacters}

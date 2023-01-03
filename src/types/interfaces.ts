@@ -3,7 +3,7 @@ export interface Character {
     created: string;
     edited: string;
     eye_color: string;
-    films: Array<string>;
+    films: Array<URL>;
     gender: string;
     hair_color: string;
     height: string;
@@ -13,7 +13,7 @@ export interface Character {
     skin_color: string;
     species: Array<string>;
     starships: Array<string>;
-    url: Array<string>;
+    url: string;
     vehicles: Array<string>;
 }
 
