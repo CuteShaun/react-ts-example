@@ -1,4 +1,4 @@
-# Verbit Frontend Home Assignment
+# React-ts-example
 ## Getting Started
 
 First install dependencies with `yarn` then run the development server `yarn dev`
